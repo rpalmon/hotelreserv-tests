@@ -1,0 +1,30 @@
+#!/bin/bash
+#install mysql, mysql-server, mysql-client, java, java-sql connector, git, vscode
+
+
+# Update the package list
+sudo apt update
+
+# Install MySQL Server
+sudo apt install mysql-server -y
+
+# Install Java
+wget https://download.oracle.com/java/23/latest/jdk-23_linux-x64_bin.deb
+sudo apt install jdk-23_linux-x64_bin.deb
+
+#install 
+wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j_9.1.0-1ubuntu22.04_all.deb
+
+sudo apt install ./mysql-connector-j_9.1.0-1ubuntu22.04_all.deb
+
+# Verify Java installation
+java -version
+
+# Install Git
+sudo apt install git -y
+
+# Install VSCode
+sudo snap install --classic code
+
+
+#need sql connector code for ubuntu 22.0.4 or windows 11

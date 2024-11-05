@@ -1,0 +1,29 @@
+CREATE TABLE Room (
+    roomID INT PRIMARY KEY AUTO_INCREMENT,
+    roomNum VARCHAR(10) NOT NULL,             
+    roomType VARCHAR(50) NOT NULL,             
+    price DECIMAL(10, 2) NOT NULL,             
+    avail BOOLEAN DEFAULT TRUE         
+);
+
+CREATE TABLE Guest (
+    guestId INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(15),
+    address VARCHAR(255)
+);
+
+CREATE TABLE Reservation (
+    reservation_id INT PRIMARY KEY AUTO_INCREMENT,
+    guestID INT,
+    roomID INT,
+    check_in_date DATE NOT NULL,
+    check_out_date DATE NOT NULL,
+    status ENUM('booked', 'checked_in', 'checked_out', 'canceled') DEFAULT 'booked',   -- Status of the reservation
+    payment_status ENUM('paid', 'unpaid', 'pending') DEFAULT 'unpaid',                 -- Payment status
+    
+    -- Define foreign keys
+    FOREIGN KEY (guest_id) REFERENCES Guest(guestId) ON DELETE CASCADE,
+    FOREIGN KEY (room_id) REFERENCES Room(roomId) ON DELETE SET NULL
+);
