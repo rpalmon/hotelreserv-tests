@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--<?import com.gluonhq.charm.glisten.control.AppBar?>-->
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="361.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <DatePicker layoutX="75.0" layoutY="83.0" promptText="Check In" />
-      <DatePicker layoutX="296.0" layoutY="83.0" promptText="Check Out" />
-      <Button layoutX="251.0" layoutY="201.0" mnemonicParsing="false" text="Reserve" />
-      <TextField layoutX="89.0" layoutY="145.0" promptText="Number of Rooms" />
-      <TextField layoutX="310.0" layoutY="145.0" promptText="Number of People" />
-<!--      <AppBar prefHeight="54.0" prefWidth="608.0" titleText="Hotel Reservation" />-->
-   </children>
-</Pane>
+<VBox xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="CENTER" spacing="20" prefHeight="361.0" prefWidth="608.0" style="-fx-background-color: #f9f9f9;"
+      fx:controller="org.hotel.hotelreservationtest.HelloController"
+      
+      >
+   
+   <!-- Top padding for space -->
+   <padding><Insets top="20" /></padding>
+
+   <!-- Date Pickers -->
+   <HBox alignment="CENTER" spacing="20">
+      <DatePicker promptText="Check In" />
+      <DatePicker promptText="Check Out" />
+   </HBox>
+
+   <!-- Room and People Fields -->
+   <HBox alignment="CENTER" spacing="20">
+      <TextField promptText="Number of Rooms" />
+      <TextField promptText="Number of People" />
+   </HBox>
+
+   <!-- Reserve Button -->
+   <Button text="Reserve" style="-fx-background-color: #0078d7; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;"
+         onAction="#onHelloButtonClick"
+
+   />
+   
+</VBox>
