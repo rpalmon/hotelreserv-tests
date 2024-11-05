@@ -4,10 +4,9 @@ database sql tables
 -guest (90)
   -possibly add payment
 -reserve
--staff
 -room
   -possibly combine with roomtype
--room type
+-user (login)
 
 classes to support tables
 -hotel system (strated)
@@ -16,17 +15,14 @@ classes to support tables
 
 -reserve
 
--staff login
-
 -room selector?
-
--room type selector
 
 DAO for classes
 -guest(done)
 -reservation
 -room
--staff-
 
 Hotel System
+-Login
+-3 buttons (reservation, guest, rooms)
 JAVA FX
