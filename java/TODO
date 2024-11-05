@@ -1,0 +1,32 @@
+ReadMe TO DO
+
+database sql tables
+-guest (90)
+  -possibly add payment
+-reserve
+-staff
+-room
+  -possibly combine with roomtype
+-room type
+
+classes to support tables
+-hotel system (strated)
+
+-guest (done)
+
+-reserve
+
+-staff login
+
+-room selector?
+
+-room type selector
+
+DAO for classes
+-guest(done)
+-reservation
+-room
+-staff-
+
+Hotel System
+JAVA FX
