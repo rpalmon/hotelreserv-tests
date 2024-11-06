@@ -25,8 +25,15 @@ public class HelloController {
     private void login(ActionEvent event) {
         event.consume();
         // System.out.println("Hello, JavaFX!");
-        // System.out.println(username.getText());
-
+        System.out.println(username.getText());
+        //print: {username} : {boolean}
+        System.out.println("Username: " + username.getText() + " Password: " + password.getText());
+        boolean nameCorrect = username.getText().equals("admin");
+        if(nameCorrect && password.getText().equals("admin")){
+            System.out.println("Login Successful");
+        } else {
+            System.out.println("Login Failed");
+        }
         
         
     }
