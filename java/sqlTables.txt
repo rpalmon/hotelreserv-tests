@@ -7,7 +7,7 @@ CREATE TABLE Room (
 );
 
 CREATE TABLE Guest (
-    guestId INT PRIMARY KEY AUTO_INCREMENT,
+    guestID INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     phone VARCHAR(15),
@@ -27,3 +27,19 @@ CREATE TABLE Reservation (
     FOREIGN KEY (guest_id) REFERENCES Guest(guestId) ON DELETE CASCADE,
     FOREIGN KEY (room_id) REFERENCES Room(roomId) ON DELETE SET NULL
 );
+
+CREATE TABLE Reservation (
+    resID INT PRIMARY KEY AUTO_INCREMENT,
+    guestID INT NOT NULL,
+    roomID INT NOT NULL,
+    checkInDate DATE NOT NULL,
+    checkOutDate DATE NOT NULL,
+    totalCost DECIMAL(10, 2) NOT NULL,
+    status ENUM('booked', 'cancelled', 'checked_in', 'checked_out') NOT NULL,
+    payment BOOLEAN NOT NULL,
+    
+    -- Foreign keys to link to Guest and Room tables
+    FOREIGN KEY (guestID) REFERENCES Guest(guestID),
+    FOREIGN KEY (roomID) REFERENCES Room(roomID)
+);
+

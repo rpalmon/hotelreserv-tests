@@ -53,13 +53,14 @@ public class GuestData {
     }
 
     public void updateGuest(Guest guest) {
-        String qry= "UPDATE Guest SET name=?,email=?,phone=?,adress=? WHERE id=?";
+        String qry= "UPDATE Guest SET name=?, email=?, phone=?, address=? WHERE guestID=?";
         try(Connection connection = SqlConnector.getConnection();
         PreparedStatement prep=connection.prepareStatement(qry)){
             prep.setString(1,guest.getName());
             prep.setString(2,guest.getEmail());
             prep.setString(3,guest.getPhone());
             prep.setString(4,guest.getAddress());
+            prep.setInt(5, guest.getGuestId());
             if(prep.executeUpdate()>0){
                 System.out.println("Guest has been updated");
             } else {
@@ -92,7 +93,7 @@ public class GuestData {
     }
 
     public void delGuest(int guestID){
-        String qry= "DELETE Guest WHERE GuestID = ?";
+        String qry = "DELETE FROM Guest WHERE GuestID = ?";
         try(Connection connect = SqlConnector.getConnection();
         PreparedStatement prep=connect.prepareStatement(qry)){
             prep.setInt(1, guestID);

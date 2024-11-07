@@ -14,9 +14,9 @@ public class RoomData {
             prep.setDouble(3,room.getPrice());
             prep.setBoolean(4,room.getAvail());
             if(prep.executeUpdate()>0){
-                System.out.println("Guest has been added");
+                System.out.println("Room has been added");
             } else {
-                System.out.println("Fail to add guest.");
+                System.out.println("Fail to add Room.");
             }
         } catch (SQLException e) {
             System.err.println("Something has gone wrong."+e.getMessage());
@@ -24,7 +24,7 @@ public class RoomData {
     }
 
     public void delRoom(int roomID){
-        String qry="DELETE Room WHERE roomID = ?";
+        String qry="DELETE FROM Room WHERE roomID = ?";
         try(Connection connect = SqlConnector.getConnection();
         PreparedStatement prep=connect.prepareStatement(qry)){
             prep.setInt(1, roomID);
@@ -39,13 +39,19 @@ public class RoomData {
     }
 
     public void updateRoom(Room room){
-        String qry="UPDATE Guest SET roomNum=?, roomType=?, pirce=?, avail=? WHERE id=?";
+        String qry="UPDATE Room SET roomNum=?, roomType=?, price=?, avail=? WHERE roomID=?";
         try(Connection connect = SqlConnector.getConnection();
             PreparedStatement prep=connect.prepareStatement(qry)){
                 prep.setString(1,room.getRoomNum());
                 prep.setString(2,room.getRoomType());
                 prep.setDouble(3,room.getPrice());
                 prep.setBoolean(4,room.getAvail());
+                prep.setInt(5, room.getRoomId());
+                if(prep.executeUpdate()>0){
+                    System.out.println("Room has been updated.");
+                } else {
+                    System.out.println("Fail to update room.");
+                }
             } catch (SQLException e) {
                 System.err.println("Something has gone wrong."+e.getMessage());
         }

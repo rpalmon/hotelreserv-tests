@@ -1,9 +1,9 @@
 import java.time.LocalDate;
 
 public class Reservation {
-    private int resId;
-    private int guestId;
-    private int roomId;
+    private int resID;
+    private int guestID;
+    private int roomID;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
     private double totalCost;
@@ -11,16 +11,16 @@ public class Reservation {
     private boolean payment;
 
     public enum Status {
-        booked, checked_in, checked_out, canceled
+        booked, checked_in, checked_out, cancelled
     }
     
     public Reservation(
-        int resId, int guestId, int roomId, 
+        int resID, int guestID, int roomID, 
         LocalDate checkInDate, LocalDate checkOutDate, 
         double totalCost, Status status, boolean payment) {
-        this.resId = resId;
-        this.guestId = guestId;
-        this.roomId = roomId;
+        this.resID = resID;
+        this.guestID = guestID;
+        this.roomID = roomID;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.totalCost = totalCost;
@@ -30,13 +30,13 @@ public class Reservation {
     
     //getters
     public int getResId() {
-        return resId;
+        return resID;
     }
     public int getGuestId() {
-        return guestId;
+        return guestID;
     }
     public int getRoomId() {
-        return roomId;
+        return roomID;
     }
     public LocalDate getCheckInDate() {
         return checkInDate;
@@ -55,14 +55,14 @@ public class Reservation {
     }
     
     //setters
-    public void setResId(int resId) {
-        this.resId = resId;
+    public void setResId(int resID) {
+        this.resID = resID;
     }
-    public void setGuestId(int guestId) {
-        this.guestId = guestId;
+    public void setGuestId(int guestID) {
+        this.guestID = guestID;
     }
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
+    public void setRoomId(int roomID) {
+        this.roomID = roomID;
     }
     public void setCheckInDate(LocalDate checkInDate) {
         this.checkInDate = checkInDate;
@@ -87,9 +87,9 @@ public class Reservation {
     @Override
     public String toString() {
         return "Reservation{" +
-                "reservationId=" + resId +
-                ", guestId=" + guestId +
-                ", roomId=" + roomId +
+                "reservationId=" + resID +
+                ", guestId=" + guestID +
+                ", roomId=" + roomID +
                 ", checkInDate=" + checkInDate +
                 ", checkOutDate=" + checkOutDate +
                 ", totalCost=" + totalCost +

@@ -3,7 +3,8 @@ public class Room {
     private String roomNum;
     private String roomType;
     private double price;
-    private boolean avail; //room availabiltiy
+    private boolean avail; 
+    //room availabiltiy
 
     //constructor
     public Room(int roomID, String roomNum, String roomType, double price, boolean avail) {
@@ -54,7 +55,6 @@ public class Room {
     public void setAvail(boolean avail) {
         this.avail = avail;
     }
-
 
     public boolean isAvail() {
         return avail;
