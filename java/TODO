@@ -30,3 +30,7 @@ DAO for classes
 
 Hotel System
 JAVA FX
+
+isExistName(guest)
+  add
+  delete
