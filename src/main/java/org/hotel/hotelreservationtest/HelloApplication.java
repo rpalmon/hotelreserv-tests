@@ -7,6 +7,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+//This class handles start up
+//run this java file to start the application
+
 public class HelloApplication extends Application {
 
     @Override
