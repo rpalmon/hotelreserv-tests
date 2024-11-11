@@ -5,24 +5,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hotel.hotelreservationtest.ControlPanelController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hotel.hotelreservationtest.ControlPanelController">
    <children>
-      <Button fx:id="guest" layoutX="154.0" layoutY="47.0" mnemonicParsing="false" onAction="#openGuestBook" prefHeight="98.0" prefWidth="251.0" text="Guest">
+      <Button fx:id="guest" layoutX="179.0" layoutY="50.0" mnemonicParsing="false" onAction="#openGuestBook" prefHeight="98.0" prefWidth="251.0" text="Guest">
          <font>
             <Font size="45.0" />
          </font>
       </Button>
-      <Button fx:id="room" layoutX="154.0" layoutY="193.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="251.0" text="Room">
+      <Button fx:id="room" layoutX="179.0" layoutY="160.0" mnemonicParsing="false" onAction="#openRoomEditor" prefHeight="98.0" prefWidth="251.0" text="Room">
          <font>
             <Font size="45.0" />
          </font>
       </Button>
-      <Button fx:id="reservation" layoutX="154.0" layoutY="329.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="251.0" text="Reservation">
+      <Button fx:id="reservation" layoutX="179.0" layoutY="273.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="251.0" text="Reservation">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
       <Button fx:id="logoutButton" layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="78.0" text="Logout" />
-      <Label fx:id="welcomeText" layoutX="255.0" layoutY="19.0" text="Welcome" />
+      <Label fx:id="welcomeText" layoutX="275.0" layoutY="19.0" text="Welcome" />
    </children>
 </Pane>

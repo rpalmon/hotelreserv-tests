@@ -30,11 +30,17 @@ public class ControlPanelController {
         System.out.println("Opening Guest Book");
         loadScene("guestbook.fxml", "Guest Book");
 
-        // FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("guestbook.fxml"));
-        // Parent loginRoot = loginLoader.load();
-        // Scene loginScene = new Scene(loginRoot);
-        // Stage currentStage = (Stage) logoutButton.getScene().getWindow();
-        // currentStage.setScene(loginScene);
+
+    }
+
+    //This function opens rooomeditor page
+    @FXML
+    private void openRoomEditor (ActionEvent event) throws IOException {
+        event.consume();
+        System.out.println("Opening Room Editor");
+        loadScene("roomeditor.fxml", "Room Editor");
+
+
     }
 
     //This method opens the reservation page
