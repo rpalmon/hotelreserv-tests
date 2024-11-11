@@ -23,13 +23,24 @@ public class ControlPanelController {
     @FXML
     private Button logoutButton; // Assuming fx:id of the Button is "logoutButton"
 
+    //This method opens the guest book page
     @FXML
-    private void openGuestBook(ActionEvent event) {
+    private void openGuestBook (ActionEvent event) throws IOException {
         event.consume();
         System.out.println("Opening Guest Book");
         loadScene("guestbook.fxml", "Guest Book");
+
+        // FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("guestbook.fxml"));
+        // Parent loginRoot = loginLoader.load();
+        // Scene loginScene = new Scene(loginRoot);
+        // Stage currentStage = (Stage) logoutButton.getScene().getWindow();
+        // currentStage.setScene(loginScene);
     }
 
+    //This method opens the reservation page
+
+
+    //This method opens the room page
     @FXML
     private void logout(ActionEvent event) {
         try {
@@ -39,27 +50,32 @@ public class ControlPanelController {
         }
     }
 
-    private void loadScene(String fxmlFile, String title) {
+    //This method loads the scene
+    private void loadScene(String fxmlFile, String title) throws IOException {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Parent root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle(title);
-            stage.show();
+            FXMLLoader loginLoader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent loginRoot = loginLoader.load();
+            Scene loginScene = new Scene(loginRoot);
+            Stage currentStage = (Stage) logoutButton.getScene().getWindow();
+            currentStage.setScene(loginScene);
+
+            // set scene title to "Control Panel"
+            currentStage.setTitle(title);
+            
         } catch (IOException e) {
             System.err.println("Error loading " + fxmlFile + ": " + e.getMessage());
             e.printStackTrace();
         }
     }
 
+    //This method loads the login for when you logout
     private void loadLoginScene() throws IOException {
         FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("login.fxml"));
         Parent loginRoot = loginLoader.load();
         Scene loginScene = new Scene(loginRoot);
         Stage currentStage = (Stage) logoutButton.getScene().getWindow();
         currentStage.setScene(loginScene);
+
     }
 
     private void handleLoadingError(IOException e) {
