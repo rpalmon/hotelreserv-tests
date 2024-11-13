@@ -2,7 +2,6 @@ package org.hotel.hotelreservationtest;
 
 import javafx.fxml.*;
 import javafx.scene.control.*;
-import javafx.scene.input.*;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
