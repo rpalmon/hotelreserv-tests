@@ -44,6 +44,13 @@ public class ControlPanelController {
     }
 
     //This method opens the reservation page
+    @FXML
+    private void openReservationManager (ActionEvent event) throws IOException {
+        event.consume();
+        System.out.println("Opening Reservation Manager");
+        loadScene("reservationmanager.fxml", "Reservation Manager");
+
+    }
 
 
     //This method opens the room page
