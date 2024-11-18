@@ -11,27 +11,34 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hotel.hotelreservationtest.ReservationManagerController">
    <children>
-      <Label layoutX="188.0" layoutY="14.0" text="Reservation Manager">
+      <!-- Title -->
+      <Label layoutX="200.0" layoutY="20.0" text="Reservation Manager">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="back" layoutX="44.0" layoutY="32.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
-      <Label layoutX="174.0" layoutY="74.0" text="ReservationID:" />
-      <Label layoutX="204.0" layoutY="102.0" text="RoomID:" />
-      <Label layoutX="204.0" layoutY="131.0" text="GuestID:" />
-      <Label layoutX="174.0" layoutY="163.0" text="Check in Date:" />
-      <Label layoutX="170.0" layoutY="193.0" text="Check out Date:" />
-      <Label layoutX="198.0" layoutY="223.0" text="Total Cost:" />
-      <Label layoutX="218.0" layoutY="251.0" text="Status:" />
-      <Label layoutX="199.0" layoutY="279.0" text="Payment?:" />
-      <ChoiceBox layoutX="261.0" layoutY="247.0" prefHeight="25.0" prefWidth="135.0" />
-      <CheckBox layoutX="268.0" layoutY="279.0" mnemonicParsing="false" />
-      <DatePicker layoutX="261.0" layoutY="159.0" />
-      <DatePicker layoutX="261.0" layoutY="189.0" />
-      <TextField layoutX="261.0" layoutY="70.0" />
-      <TextField layoutX="261.0" layoutY="98.0" />
-      <TextField layoutX="261.0" layoutY="127.0" />
-      <TextField layoutX="261.0" layoutY="219.0" />
+
+      <!-- Back Button -->
+      <Button fx:id="back" layoutX="40.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
+
+      <!-- Labels -->
+      <Label layoutX="170.0" layoutY="70.0" text="ReservationID:" />
+      <Label layoutX="170.0" layoutY="100.0" text="RoomID:" />
+      <Label layoutX="170.0" layoutY="130.0" text="GuestID:" />
+      <Label layoutX="170.0" layoutY="160.0" text="Check in Date:" />
+      <Label layoutX="170.0" layoutY="190.0" text="Check out Date:" />
+      <Label layoutX="170.0" layoutY="220.0" text="Total Cost:" />
+      <Label layoutX="170.0" layoutY="250.0" text="Status:" />
+      <Label layoutX="170.0" layoutY="280.0" text="Payment?:" />
+
+      <!-- Inputs -->
+      <TextField layoutX="280.0" layoutY="70.0" />
+      <TextField layoutX="280.0" layoutY="100.0" />
+      <TextField layoutX="280.0" layoutY="130.0" />
+      <DatePicker layoutX="280.0" layoutY="160.0" />
+      <DatePicker layoutX="280.0" layoutY="190.0" />
+      <TextField layoutX="280.0" layoutY="220.0" />
+      <ChoiceBox fx:id="reservationStatus" layoutX="280.0" layoutY="250.0" prefHeight="25.0" prefWidth="140.0" />
+      <CheckBox layoutX="280.0" layoutY="280.0" mnemonicParsing="false" />
    </children>
 </Pane>
