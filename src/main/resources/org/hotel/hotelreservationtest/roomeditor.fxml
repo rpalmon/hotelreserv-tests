@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hotel.hotelreservationtest.RoomEditorController">
    <children>
-      <Label layoutX="238.0" layoutY="14.0" text="Room Manager">
+      <!-- Header -->
+      <Label layoutX="225.0" layoutY="20.0" text="Room Manager">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="208.0" layoutY="73.0" text="RoomID" />
-      <Label layoutX="193.0" layoutY="104.0" text="RoomNum" />
-      <Label layoutX="193.0" layoutY="132.0" text="RoomType" />
-      <Label layoutX="225.0" layoutY="162.0" text="Price" />
-      <Label layoutX="195.0" layoutY="192.0" text="Available?" />
-      <Button fx:id="back" layoutX="44.0" layoutY="32.0" mnemonicParsing="false" text="Back" onAction="#handleBackButton" />
+      
+      <!-- Labels and Input Fields -->
+      <Label layoutX="150.0" layoutY="70.0" text="Room ID:" />
+      <TextField fx:id="roomIDField" layoutX="250.0" layoutY="66.0" prefWidth="200.0" />
+
+      <Label layoutX="150.0" layoutY="110.0" text="Room Number:" />
+      <TextField fx:id="roomNumberField" layoutX="250.0" layoutY="106.0" prefWidth="200.0" />
+
+      <Label layoutX="150.0" layoutY="150.0" text="Room Type:" />
+      <TextField fx:id="roomTypeField" layoutX="250.0" layoutY="146.0" prefWidth="200.0" />
+
+      <Label layoutX="150.0" layoutY="190.0" text="Price:" />
+      <TextField fx:id="priceField" layoutX="250.0" layoutY="186.0" prefWidth="200.0" />
+
+      <Label layoutX="150.0" layoutY="230.0" text="Available?" />
+      <CheckBox fx:id="availableCheckBox" layoutX="250.0" layoutY="226.0" />
+
+      <!-- Action Buttons -->
+      <Button fx:id="saveButton" layoutX="150.0" layoutY="300.0" mnemonicParsing="false" text="Save" onAction="#handleSaveButton" />
+      <Button fx:id="deleteButton" layoutX="260.0" layoutY="300.0" mnemonicParsing="false" text="Delete" onAction="#handleDeleteButton" />
+      <Button fx:id="updateButton" layoutX="370.0" layoutY="300.0" mnemonicParsing="false" text="Update" onAction="#handleUpdateButton" />
+
+      <!-- Back Button -->
+      <Button fx:id="back" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" text="Back" onAction="#handleBackButton" />
    </children>
 </Pane>

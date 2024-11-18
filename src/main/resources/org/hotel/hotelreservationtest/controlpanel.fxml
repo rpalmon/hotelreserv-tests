@@ -7,22 +7,42 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.hotel.hotelreservationtest.ControlPanelController">
    <children>
-      <Button fx:id="guest" layoutX="179.0" layoutY="50.0" mnemonicParsing="false" onAction="#openGuestBook" prefHeight="98.0" prefWidth="251.0" text="Guest">
+      <!-- Header Label -->
+      <Label layoutX="220.0" layoutY="20.0" text="Control Panel" textAlignment="CENTER">
          <font>
-            <Font size="45.0" />
+            <Font size="28.0" />
+         </font>
+      </Label>
+
+      <!-- Welcome Label -->
+      <Label fx:id="welcomeText" layoutX="260.0" layoutY="60.0" text="Welcome" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+
+      <!-- Guest Button -->
+      <Button fx:id="guest" layoutX="175.0" layoutY="100.0" mnemonicParsing="false" onAction="#openGuestBook" prefHeight="80.0" prefWidth="250.0" text="Guest">
+         <font>
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="room" layoutX="179.0" layoutY="160.0" mnemonicParsing="false" onAction="#openRoomEditor" prefHeight="98.0" prefWidth="251.0" text="Room">
+
+      <!-- Room Button -->
+      <Button fx:id="room" layoutX="175.0" layoutY="200.0" mnemonicParsing="false" onAction="#openRoomEditor" prefHeight="80.0" prefWidth="250.0" text="Room">
          <font>
-            <Font size="45.0" />
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="reservation" layoutX="179.0" layoutY="273.0" mnemonicParsing="false" onAction="#openReservationManager" prefHeight="98.0" prefWidth="251.0" text="Reservation">
+
+      <!-- Reservation Button -->
+      <Button fx:id="reservation" layoutX="175.0" layoutY="300.0" mnemonicParsing="false" onAction="#openReservationManager" prefHeight="80.0" prefWidth="250.0" text="Reservation">
          <font>
-            <Font size="36.0" />
+            <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="logoutButton" layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="78.0" text="Logout" />
-      <Label fx:id="welcomeText" layoutX="275.0" layoutY="19.0" text="Welcome" />
+
+      <!-- Logout Button -->
+      <Button fx:id="logoutButton" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#logout" prefHeight="30.0" prefWidth="80.0" text="Logout" />
    </children>
 </Pane>

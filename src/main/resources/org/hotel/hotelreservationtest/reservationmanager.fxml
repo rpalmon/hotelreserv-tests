@@ -32,12 +32,12 @@
       <Label layoutX="170.0" layoutY="280.0" text="Payment?:" />
 
       <!-- Inputs -->
-      <TextField layoutX="280.0" layoutY="70.0" />
-      <TextField layoutX="280.0" layoutY="100.0" />
-      <TextField layoutX="280.0" layoutY="130.0" />
-      <DatePicker layoutX="280.0" layoutY="160.0" />
-      <DatePicker layoutX="280.0" layoutY="190.0" />
-      <TextField layoutX="280.0" layoutY="220.0" />
+      <TextField fx:id="reservationID" layoutX="280.0" layoutY="70.0" />
+      <TextField fx:id="roomID" layoutX="280.0" layoutY="100.0" />
+      <TextField fx:id="guestID" layoutX="280.0" layoutY="130.0" />
+      <DatePicker fx:id="checkInDate" layoutX="280.0" layoutY="160.0" />
+      <DatePicker fx:id="checkOutDate" layoutX="280.0" layoutY="190.0" />
+      <TextField fx:id="totalCost" layoutX="280.0" layoutY="220.0" />
       <ChoiceBox fx:id="reservationStatus" layoutX="280.0" layoutY="250.0" prefHeight="25.0" prefWidth="140.0" />
       <CheckBox layoutX="280.0" layoutY="280.0" mnemonicParsing="false" />
    </children>
