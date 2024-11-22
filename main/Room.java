@@ -2,13 +2,16 @@ package main;
 public class Room {
     private int roomID;
     private String roomNum;
-    private String roomType;
+    private RoomType roomType;
     private double price;
     private boolean avail; 
     //room availabiltiy
 
+    public enum RoomType {
+        SINGLE, DOUBLE, SUITE
+    }
     //constructor
-    public Room(int roomID, String roomNum, String roomType, double price, boolean avail) {
+    public Room(int roomID, String roomNum, RoomType roomType, double price, boolean avail) {
         this.roomID = roomID;
         this.roomNum = roomNum;
         this.roomType = roomType;
@@ -25,7 +28,7 @@ public class Room {
         return roomNum;
     }
 
-    public String getRoomType() {
+    public RoomType getRoomType() {
         return roomType;
     }
 
@@ -45,7 +48,7 @@ public class Room {
         this.roomNum = roomNum;
     }
 
-    public void setRoomType(String roomType) {
+    public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
     }
 

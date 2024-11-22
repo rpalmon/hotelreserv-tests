@@ -17,27 +17,29 @@ public class DashboardController {
     private Button resButton;
     @FXML
     private Button roomButton;
+    @FXML
+    private Button logoutButton;
 
     // Method to handle "Guest" button click
     @FXML
     private void handlesGuestButton() {
-        loadNewScreen("guest.fxml");  // Load guest screen
+        loadScene("guest.fxml");  // Load guest screen
     }
 
     // Method to handle "Reservation" button click
     @FXML
     private void handlesResButton() {
-        loadNewScreen("reservation.fxml");  // Load reservation screen
+        loadScene("reservation.fxml");  // Load reservation screen
     }
 
     // Method to handle "Rooms" button click
     @FXML
     private void handlesRoomButton() {
-        loadNewScreen("room.fxml");  // Load rooms screen
+        loadScene("room.fxml");  // Load rooms screen
     }
 
     // Method to load a new screen (FXML) based on the button clicked
-    private void loadNewScreen(String fxmlFile) {
+    private void loadScene(String fxmlFile) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
             Parent root = loader.load();  // Load the FXML for the new screen
@@ -51,5 +53,10 @@ public class DashboardController {
             e.printStackTrace();
             // Handle errors (e.g., if the FXML file doesn't exist)
         }
+    }
+
+    @FXML
+    public void handleLogOutButton() {
+        loadScene("login.fxml");
     }
 }

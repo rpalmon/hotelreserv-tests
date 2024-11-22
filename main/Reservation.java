@@ -12,7 +12,7 @@ public class Reservation {
     private boolean payment;
 
     public enum Status {
-        booked, checked_in, checked_out, cancelled
+        BOOKED, CHECKEDIN, CHECKEDOUT, CANCELLED
     }
     
     public Reservation(

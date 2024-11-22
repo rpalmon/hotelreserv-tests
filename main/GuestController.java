@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.Guest;
@@ -26,7 +27,7 @@ public class GuestController {
     private TextField phoneField;
 
     @FXML
-    private TextField addressField;
+    private TextArea addressField;
 
     @FXML
     private Button addButton;
@@ -42,9 +43,6 @@ public class GuestController {
 
     @FXML
     private Button backToDashboardButton;
-
-    @FXML
-    private Button logoutButton;
 
     private GuestData guestData;
 
@@ -79,16 +77,22 @@ public class GuestController {
     // Method to update a guest
     @FXML
     public void updateGuest() {
+        if ( idField.getText()==null || 
+            nameField.getText().isEmpty() || 
+            emailField.getText().isEmpty() || 
+            phoneField.getText().isEmpty() || 
+            addressField.getText().isEmpty()) {
+            showAlert("Warning", "All fields must be filled out.", Alert.AlertType.WARNING);
+            return;
+        }
+        
         int id = Integer.parseInt(idField.getText());
         String name = nameField.getText();
         String email = emailField.getText();
         String phone = phoneField.getText();
         String address = addressField.getText();
 
-        if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || address.isEmpty()) {
-            showAlert("Warning", "All fields must be filled out.", Alert.AlertType.WARNING);
-            return;
-        }
+        
 
         Guest guest = new Guest(id, name, email, phone, address);
 
@@ -165,11 +169,6 @@ public class GuestController {
     @FXML
     public void handleBackToDashboardButton() {
         loadScene("dashboard.fxml", "Dashboard");
-    }
-
-    @FXML
-    public void handleLogOutButton() {
-        loadScene("login.fxml", "Login");
     }
 
     private void loadScene(String fxmlFile, String title) {

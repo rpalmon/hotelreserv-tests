@@ -11,7 +11,7 @@ public class RoomData {
         try(Connection connect = SqlConnector.getConnection();
         PreparedStatement prep=connect.prepareStatement(qry)){
             prep.setString(1,room.getRoomNum());
-            prep.setString(2,room.getRoomType());
+            prep.setString(2,room.getRoomType().name());
             prep.setDouble(3,room.getPrice());
             prep.setBoolean(4,room.getAvail());
             if(prep.executeUpdate()>0){
@@ -44,7 +44,7 @@ public class RoomData {
         try(Connection connect = SqlConnector.getConnection();
             PreparedStatement prep=connect.prepareStatement(qry)){
                 prep.setString(1,room.getRoomNum());
-                prep.setString(2,room.getRoomType());
+                prep.setString(2,room.getRoomType().name());
                 prep.setDouble(3,room.getPrice());
                 prep.setBoolean(4,room.getAvail());
                 prep.setInt(5, room.getRoomId());
@@ -69,7 +69,7 @@ public class RoomData {
                     room = new Room(
                         result.getInt("roomID"), 
                         result.getString("roomNum"), 
-                        result.getString("roomType"), 
+                        Room.RoomType.valueOf(result.getString("roomType")), 
                         result.getDouble("price"), 
                         result.getBoolean("avail"));
                 }
@@ -89,7 +89,7 @@ public class RoomData {
                 while(result.next()){
                     int ID = result.getInt("roomID"); 
                     String num = result.getString("roomNum");
-                    String type = result.getString("roomType");
+                    Room.RoomType type = Room.RoomType.valueOf(result.getString("roomType").toUpperCase());
                     double price = result.getDouble("price"); 
                     boolean avail = result.getBoolean("avail");
                     rooms.add(new Room(ID,num,type,price,avail));
@@ -109,7 +109,7 @@ public class RoomData {
             while(result.next()){
                     int ID = result.getInt("roomID"); 
                     String num = result.getString("roomNum");
-                    String type = result.getString("roomType");
+                    Room.RoomType type = Room.RoomType.valueOf(result.getString("roomType").toUpperCase());
                     double price = result.getDouble("price"); 
                     boolean avail = result.getBoolean("avail");
                     rooms.add(new Room(ID,num,type,price,avail));
@@ -129,7 +129,7 @@ public class RoomData {
                 while(result.next()){
                     int ID = result.getInt("roomID"); 
                     String num = result.getString("roomNum");
-                    String type = result.getString("roomType");
+                    Room.RoomType type = Room.RoomType.valueOf(result.getString("roomType").toUpperCase());
                     double price = result.getDouble("price"); 
                     boolean avail = result.getBoolean("avail");
                     rooms.add(new Room(ID,num,type,price,avail));
@@ -163,12 +163,14 @@ public class RoomData {
         try (Connection connect = SqlConnector.getConnection();
             PreparedStatement prep = connect.prepareStatement(sql)){
                 prep.setString(1, roomType);
+                
                 ResultSet result = prep.executeQuery();
                 while (result.next()) {
+                Room.RoomType type = Room.RoomType.valueOf(result.getString("roomType").toUpperCase());
                 rooms.add(new Room(
                     result.getInt("roomID"),
                     result.getString("roomNum"),
-                    result.getString("roomType"),
+                    type,
                     result.getDouble("price"),
                     result.getBoolean("avail")
                 ));

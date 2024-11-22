@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -33,10 +34,10 @@ public class ResController {
     private TextField totalCostField;
 
     @FXML
-    private ChoiceBox<String> statusChoiceBox;
+    private ChoiceBox<Reservation.Status> statusChoiceBox;
 
     @FXML
-    private TextField paymentField;
+    private CheckBox paymentCheckbox;
 
     @FXML
     private Button addButton;
@@ -53,9 +54,6 @@ public class ResController {
     @FXML
     private Button backToDashboardButton;
 
-    @FXML
-    private Button logoutButton;
-
     private ReservationData reservationData;
 
     public ResController() {
@@ -64,21 +62,30 @@ public class ResController {
 
     @FXML
     public void initialize() {
-        // Initialize the statusChoiceBox with the status options
-        statusChoiceBox.getItems().addAll("booked", "cancelled", "checked_in", "checked_out");
+        statusChoiceBox.getItems().setAll(Reservation.Status.values());
     }
-
     @FXML
     public void addReservation() {
+        if (resIDField.getText().isEmpty() || 
+            guestIDField.getText().isEmpty() || 
+            roomIDField.getText().isEmpty() || 
+            totalCostField.getText().isEmpty() || 
+            checkInDatePicker.getValue() == null || 
+            checkOutDatePicker.getValue() == null || 
+            statusChoiceBox.getValue() == null) {
+            showAlert("Warning", "All fields must be filled out.", Alert.AlertType.WARNING);
+            return;
+        }
+
         int guestID = Integer.parseInt(guestIDField.getText());
         int roomID = Integer.parseInt(roomIDField.getText());
         LocalDate checkInDate = checkInDatePicker.getValue();
         LocalDate checkOutDate = checkOutDatePicker.getValue();
         double totalCost = Double.parseDouble(totalCostField.getText());
-        String status = statusChoiceBox.getValue();
-        boolean payment = Boolean.parseBoolean(paymentField.getText());
+        Reservation.Status status = statusChoiceBox.getValue();
+        boolean payment = paymentCheckbox.isSelected();
 
-        Reservation reservation = new Reservation(0, guestID, roomID, checkInDate, checkOutDate, totalCost, Reservation.Status.valueOf(status), payment);
+        Reservation reservation = new Reservation(0, guestID, roomID, checkInDate, checkOutDate, totalCost, status, payment);
 
         try {
             reservationData.addRes(reservation);
@@ -92,16 +99,26 @@ public class ResController {
 
     @FXML
     public void updateReservation() {
+        if (resIDField.getText().isEmpty() || 
+            guestIDField.getText().isEmpty() || 
+            roomIDField.getText().isEmpty() || 
+            totalCostField.getText().isEmpty() || 
+            checkInDatePicker.getValue() == null || 
+            checkOutDatePicker.getValue() == null || 
+            statusChoiceBox.getValue() == null) {
+            showAlert("Warning", "All fields must be filled out.", Alert.AlertType.WARNING);
+            return;
+        }
         int resID = Integer.parseInt(resIDField.getText());
         int guestID = Integer.parseInt(guestIDField.getText());
         int roomID = Integer.parseInt(roomIDField.getText());
         LocalDate checkInDate = checkInDatePicker.getValue();
         LocalDate checkOutDate = checkOutDatePicker.getValue();
         double totalCost = Double.parseDouble(totalCostField.getText());
-        String status = statusChoiceBox.getValue();
-        boolean payment = Boolean.parseBoolean(paymentField.getText());
+        Reservation.Status status = statusChoiceBox.getValue();
+        boolean payment = paymentCheckbox.isSelected();
 
-        Reservation reservation = new Reservation(resID, guestID, roomID, checkInDate, checkOutDate, totalCost, Reservation.Status.valueOf(status), payment);
+        Reservation reservation = new Reservation(resID, guestID, roomID, checkInDate, checkOutDate, totalCost, status, payment);
 
         try {
             reservationData.updateRes(reservation);
@@ -114,8 +131,12 @@ public class ResController {
 
     @FXML
     public void deleteReservation() {
+        if (resIDField.getText().isEmpty()) {
+            showAlert("Error", "Invalid reservation ID.", Alert.AlertType.ERROR);
+            return;
+        }
+        
         int resID = Integer.parseInt(resIDField.getText());
-
         try {
             reservationData.delRes(resID);
             showAlert("Success", "Reservation deleted successfully!", Alert.AlertType.INFORMATION);
@@ -128,6 +149,10 @@ public class ResController {
 
     @FXML
     public void searchReservation() {
+        if (resIDField.getText().isEmpty()) {
+            showAlert("Error", "Invalid reservation ID.", Alert.AlertType.ERROR);
+            return;
+        }
         int resID = Integer.parseInt(resIDField.getText());
 
         Reservation reservation = reservationData.getRes(resID);
@@ -138,8 +163,8 @@ public class ResController {
             checkInDatePicker.setValue(reservation.getCheckInDate());
             checkOutDatePicker.setValue(reservation.getCheckOutDate());
             totalCostField.setText(String.valueOf(reservation.getTotalCost()));
-            statusChoiceBox.setValue(reservation.getStatus().name());
-            paymentField.setText(String.valueOf(reservation.getPayment()));
+            statusChoiceBox.setValue(reservation.getStatus());
+            paymentCheckbox.setText(String.valueOf(reservation.getPayment()));
         } else {
             showAlert("Error", "Reservation not found.", Alert.AlertType.ERROR);
         }
@@ -161,17 +186,12 @@ public class ResController {
         checkOutDatePicker.setValue(null);
         totalCostField.clear();
         statusChoiceBox.setValue(null);
-        paymentField.clear();
+        paymentCheckbox.setSelected(false);;
     }
 
     @FXML
     public void handleBackToDashboardButton() {
         loadScene("dashboard.fxml", "Dashboard");
-    }
-
-    @FXML
-    public void handleLogOutButton() {
-        loadScene("login.fxml", "Login");
     }
 
     private void loadScene(String fxmlFile, String title) {
