@@ -36,6 +36,7 @@ select data import
 		[new] button to create a new database name. name it "test_db"
 	[start import] button
 
+<<<<<<< HEAD
 the first command should be typed inside the filepath of /HOTELRESERV-380/ into terminal to re compile the contained
 linux:
 javac --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .:linux-mysql-connector/mysql-connector-java-9.1.0.jar main/*.java
@@ -50,3 +51,5 @@ java --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .:
 
 windows:
 java --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .:window-mysql-connector/mysql-connector-java-9.1.0.jar main.Main
+=======
+>>>>>>> 0226857fe0903b8a3fdd88d9bc53b9f4b392f4d5
