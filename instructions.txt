@@ -41,15 +41,11 @@ the first command should be typed inside the filepath of /HOTELRESERV-380/ into 
 linux:
 javac --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .:linux-mysql-connector/mysql-connector-java-9.1.0.jar main/*.java
 
-windows
-javac --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .:window-mysql-connector/mysql-connector-java-9.1.0.jar main/*.java
-
-
-this second line is to run the program
-linux:
 java --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .:linux-mysql-connector/mysql-connector-java-9.1.0.jar main.Main
 
 windows:
-java --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .:window-mysql-connector/mysql-connector-java-9.1.0.jar main.Main
+javac --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .;lib/mysql-connector-java-9.1.0.jar main/*.java
+java --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .;lib/mysql-connector-java-9.1.0.jar main.Main
+
 =======
 >>>>>>> 0226857fe0903b8a3fdd88d9bc53b9f4b392f4d5
