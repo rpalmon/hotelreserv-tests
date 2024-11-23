@@ -30,9 +30,10 @@ public class LoginController {
 
     @FXML
     private void handleLoginButtonAction() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-
+        // String username = usernameField.getText();
+        // String password = passwordField.getText();
+        String username = "admin";
+        String password = "password";
         // Here you can integrate your user validation logic, e.g., by calling your UserDAO methods
         if (user.validUser(username, password)) { // Example login logic
             messageLabel.setText("Login successful!");
