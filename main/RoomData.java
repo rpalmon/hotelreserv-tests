@@ -5,7 +5,7 @@ import java.util.List;
 
 //roomId, String roomNum, String roomType, double price, boolean availability
 public class RoomData {
-    
+    //add room into the database through a query
     public void addRoom(Room room){
         String qry="INSERT INTO Room (roomNum, roomType, price, avail) VALUES (?, ?, ?, ?)";
         try(Connection connect = SqlConnector.getConnection();
@@ -23,7 +23,7 @@ public class RoomData {
             System.err.println("Something has gone wrong."+e.getMessage());
         }
     }
-
+    //delete query from the room table in the database
     public void delRoom(int roomID){
         String qry="DELETE FROM Room WHERE roomID = ?";
         try(Connection connect = SqlConnector.getConnection();
@@ -38,7 +38,8 @@ public class RoomData {
             System.err.println("Something has gone wrong."+e.getMessage());
         }
     }
-
+    //update query
+    //needs an ID to update a specific room
     public void updateRoom(Room room){
         String qry="UPDATE Room SET roomNum=?, roomType=?, price=?, avail=? WHERE roomID=?";
         try(Connection connect = SqlConnector.getConnection();
@@ -58,6 +59,8 @@ public class RoomData {
         }
     }
 
+    //finds a room and its details
+    //needs the id to find the room
     public Room getRoomID(int roomID){
         Room room=null;
         String qry="SELECT * FROM Room WHERE roomID = ?";
@@ -79,6 +82,7 @@ public class RoomData {
         return room;
     }
 
+    //unemplemented room method to lsit specific rooms
     public List<Room> roomNumSearch(String roomNum){
         List<Room> rooms= new ArrayList<>();
         String qry="SELECT * FROM Room WHERE roomNum LIKE ?";
@@ -99,7 +103,7 @@ public class RoomData {
         }
         return rooms;
     }
-
+    //unemplimented method to list all rooms
     public List<Room> listRooms(){
         List<Room> rooms = new ArrayList<>();
         String qry="SELECT * FROM Room";
@@ -119,7 +123,7 @@ public class RoomData {
         }
         return rooms;
     }
-
+    //uneimplmented method to list all avilable rooms
     public List<Room> listAvailRoom(){
         List<Room> rooms = new ArrayList<>();
         String qry="SELECT * FROM Room WHERE avail = TRUE";
@@ -139,7 +143,7 @@ public class RoomData {
         }
         return rooms;
     }
-
+    //method to query up a room id and update its price
     public void updatePrice(int id, double price){
         String qry="UPDATE Room SET price = ? WHERE roomID = ?";
         try(Connection connect = SqlConnector.getConnection();
@@ -156,7 +160,7 @@ public class RoomData {
         }
     }
 
-
+    //unemplemented method to list all rooms by it's type
     public List<Room> listAvailableRoomsByType(String roomType) {
         List<Room> rooms = new ArrayList<>();
         String sql = "SELECT * FROM Room WHERE avail = TRUE AND roomType = ?";

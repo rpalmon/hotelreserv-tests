@@ -17,6 +17,7 @@ import main.RoomData;
 import main.Room.RoomType;
 
 public class RoomController {
+    //room buttons and their IDs in the room.fxml java fx file
 
     @FXML
     private TextField roomIDField;
@@ -50,8 +51,9 @@ public class RoomController {
     @FXML
     private Button backToDashboardButton;
     
+    //room data access object created
     private RoomData roomData;
-
+    //room data access object intiated
     public RoomController() {
         roomData = new RoomData();
     }
@@ -140,6 +142,7 @@ public class RoomController {
         }
     }
 
+    //searches the room by pulling the roomID from the view and pushes it onto the room dao to find the room
     @FXML
     private void searchRoom() {
         try {
@@ -165,6 +168,7 @@ public class RoomController {
         }
     }
 
+    //pop up box method for visual cues
     private void showAlert(String title, String message, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -172,7 +176,7 @@ public class RoomController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
+    //clears the text box after every use
     private void clearFields() {
         roomIDField.clear();
         roomNumField.clear();
@@ -180,12 +184,12 @@ public class RoomController {
         priceField.clear();
         availCheckBox.setSelected(false);
     }
-
+    //back button to the dashboard
     @FXML
     public void handleBackToDashboardButton() {
         loadScene("dashboard.fxml", "Dashboard");
     }
-
+    //changes view to the dashboard
     private void loadScene(String fxmlFile, String title) {
         try {
             Stage stage = (Stage) backToDashboardButton.getScene().getWindow();

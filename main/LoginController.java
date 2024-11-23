@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class LoginController {
-
+    //user name id and password fiels and text inputs
     @FXML
     private TextField usernameField;
     
@@ -23,19 +23,24 @@ public class LoginController {
     
     @FXML
     private Label messageLabel;
+    
+    //create the user data access object (acces user form sql)
     private UserData user;
+
+    //initiates the user dao
     public LoginController(){
         user=new UserData();
     }
 
+    //select text from the user box and checks it with the validuser method from the userDATA class
     @FXML
     private void handleLoginButtonAction() {
-        // String username = usernameField.getText();
-        // String password = passwordField.getText();
-        String username = "admin";
-        String password = "password";
-        // Here you can integrate your user validation logic, e.g., by calling your UserDAO methods
-        if (user.validUser(username, password)) { // Example login logic
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        // String username = "admin";
+        // String password = "password";
+    
+        if (user.validUser(username, password)) {
             messageLabel.setText("Login successful!");
             messageLabel.setStyle("-fx-text-fill: green;");
             loadNewScreen("dashboard.fxml");
@@ -46,7 +51,7 @@ public class LoginController {
 
         
     }
-
+    //if it works it logs in into the dashboard
     private void loadNewScreen(String fxmlFile) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));

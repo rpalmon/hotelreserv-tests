@@ -5,7 +5,7 @@ import java.util.List;
 import main.Guest;
 
 public class GuestData {
-
+    //add guest method
     public void addGuest(Guest guest) {
         String qry= "INSERT INTO Guest (name, email, phone, address) VALUES (?, ?, ?, ?)";
         try(Connection connect = SqlConnector.getConnection();
@@ -23,7 +23,7 @@ public class GuestData {
             System.err.println("Something has gone wrong."+e.getMessage());
         }
     }
-    
+    //get guest id method
     public Guest getGuestID(int guestID){
         Guest guest=null;
         String qry= "SELECT * FROM Guest WHERE GuestID = ?";
@@ -46,6 +46,7 @@ public class GuestData {
         return guest;
     }
 
+    //update guest method
     public void updateGuest(Guest guest) {
         String qry= "UPDATE Guest SET name = ?, email = ?, phone = ?, address = ? WHERE guestID = ?";
         try(Connection connection = SqlConnector.getConnection();
@@ -65,6 +66,8 @@ public class GuestData {
         }
     }
 
+
+    //unimplmeneted method to list all guest
     public List<Guest> getAllGuests(){
         List<Guest> guests = new ArrayList<>();
         String qry="SELECT * FROM Guest";
@@ -86,6 +89,7 @@ public class GuestData {
         return guests;
     }
 
+    //method to delete guest
     public void delGuest(int guestID){
         String qry = "DELETE FROM Guest WHERE GuestID = ?";
         try(Connection connect = SqlConnector.getConnection();
@@ -101,6 +105,7 @@ public class GuestData {
         }
     }
 
+    //unimplmenented method for guest name search
     public List<Guest> guestNameSearch(String gName){
         List<Guest> guests= new ArrayList<>();
         String qry="SELECT * FROM Guest WHERE name LIKE ?";

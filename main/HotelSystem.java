@@ -1,3 +1,5 @@
+//viewless java file to run the program. this is not needed unless the view and controller doesnt work.
+
 package main;
 import java.util.Scanner;
 

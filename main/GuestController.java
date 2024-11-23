@@ -13,7 +13,7 @@ import main.Guest;
 import main.GuestData;
 
 public class GuestController {
-
+    //buttons ID
     @FXML
     private TextField idField;
     
@@ -43,9 +43,10 @@ public class GuestController {
 
     @FXML
     private Button backToDashboardButton;
-
-    private GuestData guestData;
-
+    
+    //data acccess object creation
+    private GuestData guestData;    
+    //dao initiating
     public GuestController() {
         guestData = new GuestData();
     }
@@ -124,7 +125,7 @@ public class GuestController {
             showAlert("Error", "Failed to delete guest. " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
-
+    //method to search guest
     @FXML
     private void searchGuest() {
         try {
@@ -150,6 +151,7 @@ public class GuestController {
         }
     }
 
+    //alert system that pops up with a customer string message
     private void showAlert(String title, String message, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -157,7 +159,7 @@ public class GuestController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
+    // method to clear the fields in the javafx box
     private void clearFields() {
         idField.clear();
         nameField.clear();
@@ -166,11 +168,13 @@ public class GuestController {
         addressField.clear();
     }
 
+    //method for the back button to go back to the dashboard view
     @FXML
     public void handleBackToDashboardButton() {
         loadScene("dashboard.fxml", "Dashboard");
     }
 
+    //method to change scenes in java
     private void loadScene(String fxmlFile, String title) {
         try {
             Stage stage = (Stage) backToDashboardButton.getScene().getWindow();

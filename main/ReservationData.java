@@ -15,6 +15,8 @@ status
 payment 
  */
 public class ReservationData {
+
+    //add reservation query itno database
     public void addRes(Reservation res){
         String qry= "INSERT INTO Reservation (guestID, roomID, checkInDate, checkOutDate, totalCost, status, payment) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try(Connection connect = SqlConnector.getConnection();
@@ -36,7 +38,7 @@ public class ReservationData {
             System.err.println("Something has gone wrong."+e.getMessage());
         }
     }
-
+    //delete reservation query from the database
     public void delRes(int resID){
         String qry = "DELETE FROM Reservation WHERE resID = ?";
         try(Connection connect = SqlConnector.getConnection();
@@ -51,7 +53,7 @@ public class ReservationData {
             System.err.println("Something has gone wrong."+e.getMessage());
         }
     }
-
+    //update any column from the reservation table in the database
     public void updateRes(Reservation res){
         String qry= "UPDATE Reservation SET guestID=?, roomID=?, checkInDate=?, checkOutDate=?, totalCost=?, status=?, payment=? WHERE resID=?";
         try(Connection connect = SqlConnector.getConnection();
@@ -74,7 +76,7 @@ public class ReservationData {
             System.err.println("Something has gone wrong."+e.getMessage());
         }
     }
-
+    //searches the database for the specific reservation using the resrvation ID
     public Reservation getRes(int resID){
         Reservation reservation=null;
         String qry="SELECT * FROM Reservation WHERE resID = ?";
@@ -99,7 +101,7 @@ public class ReservationData {
         }
         return reservation;
     }
-
+    //unimplmented method to list all reservation
     public List<Reservation> listAllRes() {
         List<Reservation> res = new ArrayList<>();
         String qry = "SELECT * FROM Reservation";

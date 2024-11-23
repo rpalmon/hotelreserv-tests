@@ -1,6 +1,9 @@
 package main;
 
 import java.sql.*;
+//login for the users.
+//admin2 password
+//admin password
 
 public class UserData {
     public boolean validUser(String username, String pass) {
