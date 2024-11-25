@@ -51,7 +51,7 @@ javac --module-path ./lib --add-modules javafx.controls,javafx.fxml \
 
 java --module-path ./lib --add-modules javafx.controls,javafx.fxml \
   -classpath .:linux-mysql-connector/mysql-connector-java-9.1.0.jar main.Main
-
+```
 
 ###Windows
 ```bash
