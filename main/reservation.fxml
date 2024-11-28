@@ -44,12 +44,12 @@
       <CheckBox fx:id="paymentCheckbox" layoutX="430.0" layoutY="286.0" />
       
       <!-- Buttons -->
-      <Button fx:id="addButton" layoutX="189.0" layoutY="336.0" mnemonicParsing="false" onAction="#addReservation" prefHeight="40.0" prefWidth="100.0" text="Add" />
-      <Button fx:id="delButton" layoutX="299.0" layoutY="336.0" mnemonicParsing="false" onAction="#deleteReservation" prefHeight="40.0" prefWidth="100.0" text="Delete" />
-      <Button fx:id="updateButton" layoutX="409.0" layoutY="336.0" mnemonicParsing="false" onAction="#updateReservation" prefHeight="40.0" prefWidth="100.0" text="Update" />
-      <Button fx:id="searchButton" layoutX="519.0" layoutY="336.0" mnemonicParsing="false" onAction="#searchReservation" prefHeight="40.0" prefWidth="100.0" text="Search" />
+      <Button fx:id="addButton" layoutX="214.0" layoutY="336.0" mnemonicParsing="false" onAction="#addReservation" prefHeight="40.0" prefWidth="100.0" text="Add" />
+      <Button fx:id="delButton" layoutX="324.0" layoutY="336.0" mnemonicParsing="false" onAction="#deleteReservation" prefHeight="40.0" prefWidth="100.0" text="Delete" />
+      <Button fx:id="updateButton" layoutX="434.0" layoutY="336.0" mnemonicParsing="false" onAction="#updateReservation" prefHeight="40.0" prefWidth="100.0" text="Update" />
+      <Button fx:id="searchButton" layoutX="515.0" layoutY="76.0" mnemonicParsing="false" onAction="#searchReservation" prefHeight="25.0" prefWidth="65.0" text="Search" />
 
-      <!-- Table -->
+      <!-- Search table box and button -->
       <TableView fx:id="reservationTable" layoutX="23.0" layoutY="394.0" prefHeight="247.0" prefWidth="842.0">
          <columns>
             <TableColumn fx:id="resIdColumn" prefWidth="109.0" text="Reservation ID" />
@@ -63,7 +63,7 @@
          </columns>
       </TableView>
 
-      <Button fx:id="viewAllButton" layoutX="631.0" layoutY="336.0" onAction="#handleViewAllButton" prefHeight="40.0" prefWidth="100.0" text="View All Reservations" />
+      <Button fx:id="viewAllButton" layoutX="542.0" layoutY="336.0" onAction="#handleViewAllButton" prefHeight="40.0" prefWidth="105.0" text="View All Reservations" />
 
     </children>
 </Pane>

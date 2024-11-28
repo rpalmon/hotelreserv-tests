@@ -11,9 +11,36 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.Guest;
 import main.GuestData;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class GuestController {
-    //buttons ID
+    //Guest table views
+    @FXML
+    private TableView<Guest> guestTableView;
+
+    @FXML
+    private TableColumn<Guest, Integer> idColumn;
+
+    @FXML
+    private TableColumn<Guest, String> nameColumn;
+
+    @FXML
+    private TableColumn<Guest, String> emailColumn;
+
+    @FXML
+    private TableColumn<Guest, String> phoneColumn;
+
+    @FXML
+    private TableColumn<Guest, String> addressColumn;
+
+    @FXML
+    private Button refresh;
+
+    //buttons and text field for GUEST (top portion)
     @FXML
     private TextField idField;
     
@@ -51,6 +78,14 @@ public class GuestController {
         guestData = new GuestData();
     }
 
+    public void initialize(){
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("guestID"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+        loadAllGuests();
+    }
     // Method to add a guest
     @FXML
     public void addGuest() {
@@ -151,6 +186,20 @@ public class GuestController {
         }
     }
 
+    public void loadAllGuests() {
+        try {
+            ObservableList<Guest> allGuests = FXCollections.observableArrayList(guestData.getAllGuests());
+            guestTableView.setItems(allGuests);
+
+        } catch (Exception e) {
+            showAlert("Error", "Failed to load guest data: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    @FXML
+    private void refreshGuest(){
+        loadAllGuests();
+    }
     //alert system that pops up with a customer string message
     private void showAlert(String title, String message, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);

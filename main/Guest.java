@@ -1,15 +1,15 @@
 package main;
 
 public class Guest {
-    private int guestId;
+    private int guestID;
     private String name;
     private String email;
     private String phone;
     private String address;
     
     //constructor
-    public Guest(int guestId, String name, String email, String phone, String address) {
-        this.guestId = guestId;
+    public Guest(int guestID, String name, String email, String phone, String address) {
+        this.guestID = guestID;
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -17,8 +17,8 @@ public class Guest {
     }
 
     //getters
-    public int getGuestId() { 
-        return guestId; 
+    public int getGuestID() { 
+        return guestID; 
     }
 
     public String getName(){
@@ -38,8 +38,8 @@ public class Guest {
     }
 
     //setters
-    public void setGuestId(int guestId) { 
-        this.guestId = guestId; 
+    public void setGuestID(int guestID) { 
+        this.guestID = guestID; 
     }
     public void setName(String name){
         this.name=name;
