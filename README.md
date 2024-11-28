@@ -55,4 +55,5 @@ java --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .:
 
 windows:
 javac --module-path ./lib/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml -classpath .;window-mysql-connector/* main/*.java
+
 java --module-path ./lib/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml -classpath .;window-mysql-connector/* main.Main
