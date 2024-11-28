@@ -58,6 +58,4 @@ java --module-path ./lib --add-modules javafx.controls,javafx.fxml \
 javac --module-path ./lib/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml -classpath .;window-mysql-connector\mysql-connector-java-9.1.0.jar main\*.java
 
 java --module-path ./lib/javafx-sdk-23.0.1/lib --add-modules javafx.contgitwindow-mysql-connector\* main.Main
-
-java -Dprism.order=sw --module-path ./lib/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml -classpath .;window-mysql-connector/mysql-connector-java-9.1.0.jar main.Main
 ```
