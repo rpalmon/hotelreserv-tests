@@ -1,3 +1,5 @@
+<!-- ROE you are not to make changes to this git repository. use your own repository and i will pull as needed and make the changes. -->
+
 JAVADOCS: [Link](https://rpalmon.github.io/hotelreserv-380/main/package-summary.html)
 
 # MySQL Setup and Database Integration Guide

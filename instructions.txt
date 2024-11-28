@@ -1,3 +1,5 @@
+ROE you are not to make changes to this git repository
+
 1. msql setup
     a. install download mysql installer
         aa. install workbench and mysql
