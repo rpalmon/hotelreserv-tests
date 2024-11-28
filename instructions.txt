@@ -43,5 +43,5 @@ javac --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .
 java --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .:linux-mysql-connector/mysql-connector-java-9.1.0.jar main.Main
 
 windows:
-javac --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .;lib/mysql-connector-java-9.1.0.jar main/*.java
-java --module-path ./lib --add-modules javafx.controls,javafx.fxml -classpath .;lib/mysql-connector-java-9.1.0.jar main.Main
+javac --module-path ./lib/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml -classpath .;window-mysql-connector/* main/*.java
+java --module-path ./lib/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml -classpath .;window-mysql-connector/* main.Main
