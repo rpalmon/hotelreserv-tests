@@ -87,7 +87,7 @@ DROP TABLE IF EXISTS `Room`;
 CREATE TABLE `Room` (
   `roomID` int NOT NULL AUTO_INCREMENT,
   `roomNum` varchar(10) NOT NULL,
-  `roomType` varchar(50) NOT NULL,
+  `roomType` enum('SINGLE','DOUBLE','SUITE') DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
   `avail` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`roomID`)

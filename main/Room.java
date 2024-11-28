@@ -20,7 +20,7 @@ public class Room {
     }
 
     //getters 
-    public int getRoomId() {
+    public int getRoomID() {
         return roomID;
     }
 
@@ -40,7 +40,7 @@ public class Room {
         return avail;
     }
     //setters
-    public void setRoomId(int roomID) {
+    public void setRoomID(int roomID) {
         this.roomID = roomID;
     }
 

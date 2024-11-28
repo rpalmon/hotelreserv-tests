@@ -48,7 +48,7 @@ public class RoomData {
                 prep.setString(2,room.getRoomType().name());
                 prep.setDouble(3,room.getPrice());
                 prep.setBoolean(4,room.getAvail());
-                prep.setInt(5, room.getRoomId());
+                prep.setInt(5, room.getRoomID());
                 if(prep.executeUpdate()>0){
                     System.out.println("Room has been updated.");
                 } else {
@@ -184,6 +184,33 @@ public class RoomData {
         }
         return rooms;
     }
+    
+
+    public List<Room> listRoomsByType(String roomType) {
+        List<Room> rooms = new ArrayList<>();
+        String sql = "SELECT * FROM Room WHERE roomType = ?";
+        try (Connection connect = SqlConnector.getConnection();
+            PreparedStatement prep = connect.prepareStatement(sql)){
+            prep.setString(1, roomType); //set the parameter into the "?" part of the query
+                
+            ResultSet result = prep.executeQuery();//prepares the query and process into result
+
+            while (result.next()) {
+                Room.RoomType type = Room.RoomType.valueOf(result.getString("roomType").toUpperCase());
+                rooms.add(new Room(
+                    result.getInt("roomID"),
+                    result.getString("roomNum"),
+                    type,
+                    result.getDouble("price"),
+                    result.getBoolean("avail")
+                ));
+            }
+        } catch (SQLException e) {
+            System.err.println("Something went wrong" + e.getMessage());
+        }
+        return rooms;
+    }
+
     
     //list rooms
     //list avail rooms

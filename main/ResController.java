@@ -12,8 +12,45 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.ChoiceBox;
 import java.time.LocalDate;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ResController {
+    @FXML
+    private TableView<Reservation> reservationTable;
+
+    @FXML
+    private TableColumn<Reservation, Integer> resIdColumn;
+
+    @FXML
+    private TableColumn<Reservation, Integer> guestIdColumn;
+
+    @FXML
+    private TableColumn<Reservation, Integer> roomIdColumn;
+
+    @FXML
+    private TableColumn<Reservation, LocalDate> checkInColumn;
+
+    @FXML
+    private TableColumn<Reservation, LocalDate> checkOutColumn;
+
+    @FXML
+    private TableColumn<Reservation, Double> totalCostColumn;
+
+    @FXML
+    private TableColumn<Reservation, Reservation.Status> statusColumn;
+
+    @FXML
+    private TableColumn<Reservation, Boolean> paymentColumn;
+
+    @FXML
+    private Button viewAllButton;
+
+    @FXML
+    private ObservableList<Reservation> reservations;
     //rescontroller id buttons in the fxml files
     @FXML
     private TextField resIDField;
@@ -60,10 +97,25 @@ public class ResController {
     public ResController() {
         reservationData = new ReservationData();
     }
+
     //the choice box dynamically obtain it from resesrvation.class and gets put into the combobox
     @FXML
     public void initialize() {
+        // Initialize choice box
         statusChoiceBox.getItems().setAll(Reservation.Status.values());
+
+        // Set up columns
+        resIdColumn.setCellValueFactory(new PropertyValueFactory<>("resId"));
+        guestIdColumn.setCellValueFactory(new PropertyValueFactory<>("guestId"));
+        roomIdColumn.setCellValueFactory(new PropertyValueFactory<>("roomId"));
+        checkInColumn.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
+        checkOutColumn.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
+        totalCostColumn.setCellValueFactory(new PropertyValueFactory<>("totalCost"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        paymentColumn.setCellValueFactory(new PropertyValueFactory<>("payment"));
+
+        // Load all reservations when the view is loaded
+        loadAllReservations();
     }
 
     //add a reservation is called fromt he res dao
@@ -226,4 +278,22 @@ public class ResController {
             showAlert("Error", "Unable to load " + title + " view. " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
+
+    @FXML
+    public void loadAllReservations() {
+        try {
+            // Retrieve reservations from the Res DATA class
+            reservations = FXCollections.observableArrayList(reservationData.getAllReservations());
+            reservationTable.setItems(reservations);
+        } catch (Exception e) {
+            showAlert("Error", "Failed to load reservations. "+e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+    
+    @FXML
+    public void handleViewAllButton() {
+        loadAllReservations();
+    }
+
+
 }

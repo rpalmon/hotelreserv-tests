@@ -1,5 +1,6 @@
 package main;
 
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,10 +16,31 @@ import javafx.stage.Stage;
 import main.Room;
 import main.RoomData;
 import main.Room.RoomType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 
 public class RoomController {
-    //room buttons and their IDs in the room.fxml java fx file
+    //room table buttons
+    @FXML
+    private TableView<Room> roomTableView; // TableView to display rooms
 
+    @FXML
+    private TableColumn<Room, Integer> roomIDColumn; // TableColumn for Room ID
+    @FXML
+    private TableColumn<Room, String> roomNumColumn; // TableColumn for Room Number
+    @FXML
+    private TableColumn<Room, Room.RoomType> roomTypeColumn; // TableColumn for Room Type
+    @FXML
+    private TableColumn<Room, Double> priceColumn; // TableColumn for Price
+    @FXML
+    private TableColumn<Room, Boolean> availColumn; // TableColumn for Availability
+
+    @FXML
+    private ComboBox<Room.RoomType> roomType2; //search by type combo box
+
+    //room buttons and their IDs in the room.fxml java fx file
     @FXML
     private TextField roomIDField;
 
@@ -33,8 +55,6 @@ public class RoomController {
 
     @FXML
     private CheckBox availCheckBox;
-    // @FXML
-    // private TextField availField;
 
     @FXML
     private Button addButton;
@@ -50,7 +70,9 @@ public class RoomController {
 
     @FXML
     private Button backToDashboardButton;
-    
+
+    private ObservableList<Room> allRooms = FXCollections.observableArrayList();
+
     //room data access object created
     private RoomData roomData;
     //room data access object intiated
@@ -62,8 +84,19 @@ public class RoomController {
     @FXML
     public void initialize() {
         roomTypeField.getItems().setAll(Room.RoomType.values());
+        roomType2.getItems().setAll(Room.RoomType.values());
+        // Set up columns in the TableView
+        roomIDColumn.setCellValueFactory(new PropertyValueFactory<>("roomID"));
+        roomNumColumn.setCellValueFactory(new PropertyValueFactory<>("roomNum"));
+        roomTypeColumn.setCellValueFactory(new PropertyValueFactory<>("roomType"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        availColumn.setCellValueFactory(new PropertyValueFactory<>("avail"));
+
+        // Load all rooms initially
+        loadAllRooms();
     }
-    
+
+
     // Method to add a guest
     @FXML
     public void addRoom() {
@@ -165,6 +198,27 @@ public class RoomController {
             }
         } catch (NumberFormatException e) {
             showAlert("Error", "Room ID is not valid.", Alert.AlertType.ERROR);
+        }
+    }
+
+    public void loadAllRooms() {
+        try {
+            allRooms = FXCollections.observableArrayList(roomData.listRooms());
+            roomTableView.setItems(allRooms); // Set items in TableView
+        } catch (Exception e) {
+            showAlert("Error", "Room fail to load. " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    public void filterRoomsByType() {
+        Room.RoomType roomType = roomType2.getValue();
+        if (roomType != null) {
+            // Fetch rooms of the selected type
+            List<Room> filteredRooms = roomData.listRoomsByType(roomType.name());
+            ObservableList<Room> observableFilteredRooms = FXCollections.observableArrayList(filteredRooms);
+            roomTableView.setItems(observableFilteredRooms); // Update ObservableList with filtered rooms
+        } else {
+            loadAllRooms();
         }
     }
 

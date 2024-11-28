@@ -5,46 +5,65 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ResController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ResController">
    <children>
       <!-- Title -->
-      <Label layoutX="200.0" layoutY="20.0" text="Reservation Manager">
+      <Label layoutX="348.0" layoutY="14.0" text="Reservation Manager">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
 
       <!-- Back Button -->
-      <Button fx:id="backToDashboardButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackToDashboardButton" prefHeight="35.0" prefWidth="81.0" text="Back"/>
+      <Button fx:id="backToDashboardButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackToDashboardButton" prefHeight="35.0" prefWidth="81.0" text="Back" />
 
       <!-- Labels -->
-      <Label layoutX="170.0" layoutY="70.0" text="ReservationID:" />
-      <Label layoutX="170.0" layoutY="100.0" text="RoomID:" />
-      <Label layoutX="170.0" layoutY="130.0" text="GuestID:" />
-      <Label layoutX="170.0" layoutY="160.0" text="Check in Date:" />
-      <Label layoutX="170.0" layoutY="190.0" text="Check out Date:" />
-      <Label layoutX="170.0" layoutY="220.0" text="Total Cost:" />
-      <Label layoutX="170.0" layoutY="250.0" text="Status:" />
-      <Label layoutX="170.0" layoutY="280.0" text="Payment?:" />
+      <Label layoutX="320.0" layoutY="76.0" text="ReservationID:" />
+      <Label layoutX="320.0" layoutY="106.0" text="RoomID:" />
+      <Label layoutX="320.0" layoutY="136.0" text="GuestID:" />
+      <Label layoutX="320.0" layoutY="166.0" text="Check in Date:" />
+      <Label layoutX="320.0" layoutY="196.0" text="Check out Date:" />
+      <Label layoutX="320.0" layoutY="226.0" text="Total Cost:" />
+      <Label layoutX="320.0" layoutY="256.0" text="Status:" />
+      <Label layoutX="320.0" layoutY="286.0" text="Payment?:" />
 
       <!-- Inputs -->
-      <TextField fx:id="resIDField" layoutX="280.0" layoutY="70.0" prefHeight="25.0" prefWidth="105.0" />
-      <TextField fx:id="roomIDField" layoutX="280.0" layoutY="100.0" />
-      <TextField fx:id="guestIDField" layoutX="280.0" layoutY="130.0" />
-      <DatePicker fx:id="checkInDatePicker" layoutX="280.0" layoutY="160.0" prefHeight="25.0" prefWidth="170.0" />
-      <DatePicker fx:id="checkOutDatePicker" layoutX="280.0" layoutY="190.0" prefHeight="25.0" prefWidth="170.0" />
-      <TextField fx:id="totalCostField" layoutX="280.0" layoutY="220.0" />
-      <ChoiceBox fx:id="statusChoiceBox" layoutX="280.0" layoutY="250.0" prefHeight="25.0" prefWidth="170.0" />
-      <CheckBox fx:id="paymentCheckbox" layoutX="280.0" layoutY="280.0" />
+      <TextField fx:id="resIDField" layoutX="430.0" layoutY="76.0" prefHeight="25.0" prefWidth="105.0" />
+      <TextField fx:id="roomIDField" layoutX="430.0" layoutY="106.0" />
+      <TextField fx:id="guestIDField" layoutX="430.0" layoutY="136.0" />
+      <DatePicker fx:id="checkInDatePicker" layoutX="430.0" layoutY="166.0" prefHeight="25.0" prefWidth="170.0" />
+      <DatePicker fx:id="checkOutDatePicker" layoutX="430.0" layoutY="196.0" prefHeight="25.0" prefWidth="170.0" />
+      <TextField fx:id="totalCostField" layoutX="430.0" layoutY="226.0" />
+      <ChoiceBox fx:id="statusChoiceBox" layoutX="430.0" layoutY="256.0" prefHeight="25.0" prefWidth="170.0" />
+      <CheckBox fx:id="paymentCheckbox" layoutX="430.0" layoutY="286.0" />
       
       <!-- Buttons -->
-      <Button fx:id="addButton" layoutX="140.0" layoutY="337.0" mnemonicParsing="false" onAction="#addReservation" prefHeight="40.0" prefWidth="100.0" text="Add" />
-      <Button fx:id="delButton" layoutX="250.0" layoutY="337.0" mnemonicParsing="false" onAction="#deleteReservation" prefHeight="40.0" prefWidth="100.0" text="Delete" />
-      <Button fx:id="updateButton" layoutX="360.0" layoutY="337.0" mnemonicParsing="false" onAction="#updateReservation" prefHeight="40.0" prefWidth="100.0" text="Update" />
-      <Button fx:id="searchButton" layoutX="470.0" layoutY="337.0" mnemonicParsing="false" onAction="#searchReservation" prefHeight="40.0" prefWidth="100.0" text="Search" />
+      <Button fx:id="addButton" layoutX="189.0" layoutY="336.0" mnemonicParsing="false" onAction="#addReservation" prefHeight="40.0" prefWidth="100.0" text="Add" />
+      <Button fx:id="delButton" layoutX="299.0" layoutY="336.0" mnemonicParsing="false" onAction="#deleteReservation" prefHeight="40.0" prefWidth="100.0" text="Delete" />
+      <Button fx:id="updateButton" layoutX="409.0" layoutY="336.0" mnemonicParsing="false" onAction="#updateReservation" prefHeight="40.0" prefWidth="100.0" text="Update" />
+      <Button fx:id="searchButton" layoutX="519.0" layoutY="336.0" mnemonicParsing="false" onAction="#searchReservation" prefHeight="40.0" prefWidth="100.0" text="Search" />
+
+      <!-- Table -->
+      <TableView fx:id="reservationTable" layoutX="23.0" layoutY="394.0" prefHeight="247.0" prefWidth="842.0">
+         <columns>
+            <TableColumn fx:id="resIdColumn" prefWidth="109.0" text="Reservation ID" />
+            <TableColumn fx:id="guestIdColumn" prefWidth="62.0" text="Guest ID" />
+            <TableColumn fx:id="roomIdColumn" prefWidth="69.0" text="Room ID" />
+            <TableColumn fx:id="checkInColumn" prefWidth="96.0" text="Check-In Date" />
+            <TableColumn fx:id="checkOutColumn" prefWidth="97.0" text="Check-Out Date" />
+            <TableColumn fx:id="totalCostColumn" prefWidth="86.0" text="Total Cost" />
+            <TableColumn fx:id="statusColumn" text="Status" />
+            <TableColumn fx:id="paymentColumn" prefWidth="84.0" text="Payment" />
+         </columns>
+      </TableView>
+
+      <Button fx:id="viewAllButton" layoutX="631.0" layoutY="336.0" onAction="#handleViewAllButton" prefHeight="40.0" prefWidth="100.0" text="View All Reservations" />
+
     </children>
 </Pane>

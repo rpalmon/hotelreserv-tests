@@ -102,7 +102,7 @@ public class ReservationData {
         return reservation;
     }
     //unimplmented method to list all reservation
-    public List<Reservation> listAllRes() {
+    public List<Reservation> getAllReservations() {
         List<Reservation> res = new ArrayList<>();
         String qry = "SELECT * FROM Reservation";
         
@@ -130,5 +130,4 @@ public class ReservationData {
         }
         return res;
     }
-
 }
